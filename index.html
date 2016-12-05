@@ -1,0 +1,38 @@
+<html>
+<head>
+<style>
+html, body { height: 100%; margin: 0; }
+#viewport { position: relative; height: 100%; background: #1d1f20; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+<style>
+body{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+div {z-index:1000;
+display: inline;
+}
+#c{
+position:absolute;
+top:90%;
+}
+.but}{
+height:10%;width:25%;background:green;border:1px solid black;}
+</style>
+</head>
+<body>
+<span style='position:absolute;z-index:100;color:white;left:50%;'><span id='count'>0</span> Points(Highscore: <span id='high'>0</span>)</span>
+<canvas id='viewport' style='height:100%;width100%;'></canvas>
+<span id='c'></span>
+<div class='but' id='lsp' ></div>
+<div id='lm' style='height:10%;width:25%;background:green;border:1px solid black;'></div>
+<div id='rm' style='height:10%;width:25%;background:green;border:1px solid black;'></div>
+<div id='rsp' style='height:10%;width:25%;background:green;border:1px solid black;'></div></span>
+<script src='scripts/physicsjs-full.js'></script>
+<script src='scripts/prac.js'></script>
+</body>
+
+</html>
