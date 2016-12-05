@@ -196,8 +196,7 @@ Physics.behavior('interact', function( parent ){
                             data = self.bodyData[touchId];
                             if ( data ){
                                 body = data.body;
-								if(touch.pageY < window.innerHeight/10 || touch.pageY + window.innerHeight/8 > window.innerHeight || touch.pageX < screen.height / 10 || touch.pageX > lastWall.state.pos.x - window.innerWidth/5){self.release();return}
-                                // wake the body up
+								                     // wake the body up
                                 body.sleep( false );
                                 data.time = Physics.util.ticker.now();
     
@@ -207,6 +206,7 @@ Physics.behavior('interact', function( parent ){
                                 data.pos.clone( pos );
 								
                                 pos.body = body;
+								//if(touch.pageY < window.innerHeight/10 || touch.pageY + window.innerHeight/8 > window.innerHeight || touch.pageX < screen.height / 10 || touch.pageX > lastWall.state.pos.x - window.innerWidth/5){self.release();}
                             }
     
                             self._world.emit('interact:move', pos);
@@ -516,4 +516,7 @@ window.onload = function(){
 	document.getElementById('viewport').addEventListener("touchstart", ts, false);
   document.getElementById('viewport').addEventListener("touchend", te, false);
   document.getElementById('viewport').addEventListener("touchmove", tm, false);
+}
+function resetPlay(){
+	player.state.pos.x = window.innerWidth/3;player.state.pos.y = window.innerHeight/3;
 }
