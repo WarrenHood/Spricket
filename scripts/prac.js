@@ -21,12 +21,7 @@ Physics.behavior('constant-acceleration-mod', function( parent ){
                 delete this.options.acc;
             },
     
-            /**
-             * ConstantAccelerationBehavior#setAcceleration( acc ) -> this
-             * - acc (Vectorish): The acceleration vector
-             * 
-             * Set the acceleration of the behavior.
-             **/
+
             setAcceleration: function( acc ){
     
                 this._acc.clone( acc );
@@ -201,8 +196,7 @@ Physics.behavior('interact', function( parent ){
                             data = self.bodyData[touchId];
                             if ( data ){
                                 body = data.body;
-								if(touch.pageY < window.innerHeight/10 || touch.pageY + window.innerHeight/8 > window.innerHeight || touch.pageX < screen.height / 10 || touch.pageX > lastWall.state.pos.x - window.innerWidth/5){self.release();return}
-                                // wake the body up
+								                     // wake the body up
                                 body.sleep( false );
                                 data.time = Physics.util.ticker.now();
     
@@ -212,6 +206,7 @@ Physics.behavior('interact', function( parent ){
                                 data.pos.clone( pos );
 								
                                 pos.body = body;
+								//if(touch.pageY < window.innerHeight/10 || touch.pageY + window.innerHeight/8 > window.innerHeight || touch.pageX < screen.height / 10 || touch.pageX > lastWall.state.pos.x - window.innerWidth/5){self.release();}
                             }
     
                             self._world.emit('interact:move', pos);
@@ -420,7 +415,7 @@ lastWall = Physics.body('rectangle',{treatment:'static',vy:1,x:window.innerWidth
 //world.add(firstWall);
 world.add(Physics.behavior('interact',{el: world.renderer().container}));
 world.add(lastWall);
-for(var i = 0;i < 30;i++){
+for(var i = 0;i < 10;i++){
 	//points = [{x:0,y:0},{x:100,y:0},{x:0,y:100},{x:-10,y:50},{x:-10,y:50}];
 	//world.add(Physics.body('convex-polygon',{x:window.innerWidth/2+Math.random()*100,vertices:points,styles:{fillStyle:'blue',angleIndicator:'tansparent'} }));
 	var cb = Physics.body('circle',{x:window.innerWidth/3+Math.random()*100,radius:window.innerHeight/50,styles:{fillStyle:'blue',angleIndicator:'tansparent'} });
@@ -521,4 +516,7 @@ window.onload = function(){
 	document.getElementById('viewport').addEventListener("touchstart", ts, false);
   document.getElementById('viewport').addEventListener("touchend", te, false);
   document.getElementById('viewport').addEventListener("touchmove", tm, false);
+}
+function resetPlay(){
+	player.state.pos.x = window.innerWidth/3;player.state.pos.y = window.innerHeight/3;
 }
